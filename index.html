@@ -28,14 +28,8 @@
     <input type="text" id="identity" placeholder="Identity" />
     <input type="text" id="email" placeholder="Email" />
     <input type="text" id="name" placeholder="Name" />
-    
-    <button id="saveValues" onClick="dataLayer.push({
-        'identity': document.getElementById('identity').value,
-        'email': document.getElementById('email').value,
-        'name': document.getElementById('name').value
-    })">Save Values</button>
 
-    <button id="createProfile">Create Porfile</button>
+    <button id="createProfile" onclick="userLogin()">Create Porfile</button>
 
     <button id="sendEvent">Send Event</button>
 
@@ -43,5 +37,19 @@
 
 
 </body>
+<script>
+    function userLogin() {
+        var identity = document.getElementById("identity").value;
+        var email = document.getElementById("email").value;
+        var name = document.getElementById("name").value;
 
+        clevertap.onUserLogin.push({
+            "Site": {
+                "Name": name,
+                "Identity": identity,
+                "Email": email
+            }
+        })
+    }
+</script>
 </html>

@@ -31,7 +31,13 @@
 
     <button id="createProfile" onclick="userLogin()">Create Porfile</button>
 
-    <button id="sendEvent" onclick="eventPopup()">Send Event</button>
+    <label for="popupVersion">Choose Pop-up:</label>
+    <select name="popupVersion" id="popup">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+
+    <button id="showPopup" onclick="eventPopup()">Show Pop-up</button>
 
     <p><a href="/tailPage">Go to Next Page</a></p>
 
@@ -54,7 +60,13 @@
 </script>
 <script>
     function eventPopup() {
-        clevertap.event.push("Web Pop-up 1")
+        var popupVersion = document.getElementById("popup").value;
+
+        if (popupVersion == 1) {
+            clevertap.event.push("Web Pop-up 1")
+        } else {
+            clevertap.event.push("Web Pop-up 2")
+        }
     }
 </script>
 </html>

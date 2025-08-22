@@ -39,6 +39,8 @@
 
     <button id="showPopup" onclick="eventPopup()">Show Pop-up</button>
 
+    <button id="pushNotification" onclick="subscribePush()">Subscribe to push</button>
+
     <p><a href="/tailPage">Go to Next Page</a></p>
 
 
@@ -67,6 +69,21 @@
         } else {
             clevertap.event.push("Web Pop-up 2")
         }
+    }
+</script>
+<script>
+    function subscribePush() {
+        clevertap.notifications.push({
+            "titleText": "Would you like to receive Push Notifications?",
+            "bodyText": "We promise to only send you relevant content and not too frequently",
+            "okButtonText": "Subscribe",
+            "rejectButtonText": "No Thanks",
+            // These are the default values. You can override them if you want
+            "okButtonColor": "#0f7bff",
+            "rejectButtonColor": "#aaaaaa",
+            "askAgainTimeInSeconds": 10, //time after which the push prompt will re-appear, if the user clicks on 'No Thanks'
+            "serviceWorkerPath": "/clevertap_sw.js" // The path where the service worker file is located relative to the root of your domain
+        })
     }
 </script>
 </html>
